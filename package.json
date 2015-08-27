@@ -1,0 +1,36 @@
+{
+  "name": "node-export-mud",
+  "version": "0.0.1",
+  "description": "Funzioni utili per l'esportazione del MUD Telematico",
+  "main": "export-mud/index.js",
+  "dependencies": {
+    "moment": "^2.10.6"
+  },
+  "devDependencies": {
+    "jsdoc-baseline": "https://github.com/dennybiasiolli/jsdoc-baseline/tarball/master"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [
+    "export",
+    "mud",
+    "telematico",
+    "rifiuti",
+    "raee",
+    "imballaggi",
+    "veicoli fuori uso",
+    "rottamatori",
+    "intermediari"
+  ],
+  "author": "Denny Biasiolli",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennybiasiolli/node-export-mud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dennybiasiolli/node-export-mud/issues"
+  },
+  "homepage": "https://github.com/dennybiasiolli/node-export-mud#readme"
+}
