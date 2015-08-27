@@ -27,10 +27,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dennybiasiolli/node-export-mud.git"
+    "url": "git+https://dennybiasiolli@bitbucket.org/dennybiasiolli/node-export-mud.git"
   },
   "bugs": {
-    "url": "https://github.com/dennybiasiolli/node-export-mud/issues"
+    "url": "https://bitbucket.org/dennybiasiolli/node-export-mud/issues"
   },
-  "homepage": "https://github.com/dennybiasiolli/node-export-mud#readme"
+  "homepage": "https://bitbucket.org/dennybiasiolli/node-export-mud#readme"
 }
