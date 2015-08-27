@@ -1,12 +1,12 @@
-mud-rifiuti - Funzioni utili per il calcolo del MUD Telematico
+export-mud - Funzioni utili per l'esportazione del MUD Telematico
 
 ## Installation
 
-    npm install mud-rifiuti
+    npm install export-mud
 
 ## Usage
 
-    var mudRifiuti = require('mud-rifiuti')
+    var exportMud = require('export-mud')
 
 
 Instructions coming soon!
