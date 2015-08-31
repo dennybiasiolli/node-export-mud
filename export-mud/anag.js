@@ -33,6 +33,10 @@ var utils = require('./utils');
  * @param {string} cognomeLegaleRappr Cognome del legale rappresentante
  * @param {string} nomeLegaleRappr Nome del legale rappresentante
  * @param {number} nomeLegaleRappr Mesi di attività nell'anno
+ * @param {date} dataCompilazione Data di compilazione/stampa
+ * @param {number} mesiAttivita Mesi di attività nell'anno
+ * @param {boolean} annullaPrecedente Annulla e sostituisce
+ * @param {date} dataComunicazioneSostituita Data della comunicazione sostituita
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record AA – Scheda SA-1 - Anagrafica azienda e anagrafica unita' locale
  */
@@ -40,7 +44,7 @@ exports.getRecordSA1 = function(annoRiferimentoDichiarazione, codiceFiscale, cod
                                  codIstatAttivita, nREA, nAddettiUL, ragioneSociale,
                                  ul_IstatProvincia, ul_IstatComune, ul_via, ul_civico, ul_cap, ul_prefissoTelefonico, ul_numeroTelefonico,
                                  sl_IstatProvincia, sl_IstatComune, sl_via, sl_civico, sl_cap, sl_prefissoTelefonico, sl_numeroTelefonico,
-                                 cognomeLegaleRappr, nomeLegaleRappr, /* dataCompilazione */ mesiAttivita/* annullaPrecedente, dataComunicazioneSostituita*/,
+                                 cognomeLegaleRappr, nomeLegaleRappr, dataCompilazione, mesiAttivita, annullaPrecedente, dataComunicazioneSostituita,
                                  callback)
 {
     // Codice ISTAT attività svolta (senza punti e lettere allineato a sinistra)
@@ -71,10 +75,10 @@ exports.getRecordSA1 = function(annoRiferimentoDichiarazione, codiceFiscale, cod
         utils.formattaStringa(sl_numeroTelefonico, 10),
         utils.formattaStringa(cognomeLegaleRappr, 25),
         utils.formattaStringa(nomeLegaleRappr, 25),
-        utils.formattaDataOra(new Date(), 'YYYYMMDD'), // dataCompilazione
+        utils.formattaDataOra(dataCompilazione, 'YYYYMMDD'),
         utils.formattaNumero(mesiAttivita, 2),
-        utils.formattaBoolean(false), // annullaPrecedente
-        utils.formattaNumero(0, 8) // dataComunicazioneSostituita
+        utils.formattaBoolean(annullaPrecedente),
+        utils.formattaDataOra(dataComunicazioneSostituita, 'YYYYMMDD')
     );
     if(callback)
         return callback(retVal.length != 338, retVal);
