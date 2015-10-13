@@ -31,7 +31,6 @@ var utils = require('./utils');
  * @param {string} sl_prefissoTelefonico Prefisso telefonico della sede legale
  * @param {string} sl_numeroTelefonico Numero telefonico della sede legale
  * @param {string} cognomeLegaleRappr Cognome del legale rappresentante
- * @param {string} nomeLegaleRappr Nome del legale rappresentante
  * @param {number} nomeLegaleRappr Mesi di attività nell'anno
  * @param {date} dataCompilazione Data di compilazione/stampa
  * @param {number} mesiAttivita Mesi di attività nell'anno
