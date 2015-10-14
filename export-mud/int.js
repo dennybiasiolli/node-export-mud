@@ -74,6 +74,7 @@ exports.getRecordINT = function(annoRiferimentoDichiarazione, codiceFiscale, cod
  * @param {number} istatComune ISTAT Comune
  * @param {string} via Via
  * @param {string} civico Nr. Civico
+ * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
  * @param {decimal} kgQta Quantità acquisita
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record DB - Moduli UO – Unità di Origine del rifiuto.
@@ -104,6 +105,7 @@ exports.getRecordINT_UO = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {number} istatComune ISTAT Comune
  * @param {string} via Via
  * @param {string} civico Nr. Civico
+ * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
  * @param {decimal} kgQta Quantità ceduta nell'anno
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record DB - Moduli UD – Unità di Destinazione del rifiuto.
@@ -135,6 +137,7 @@ exports.getRecordINT_UD = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {number} istatComune ISTAT Comune
  * @param {string} via Via
  * @param {string} civico Nr. Civico
+ * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
  * @param {decimal} kgQta Quantità acquisita / ceduta nell'anno
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record DB - Moduli UO / UD – Allegati alla Scheda INT
