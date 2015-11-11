@@ -124,7 +124,7 @@ exports.getRecordXX = function(nAA, nAB, nBA, nBB, nBC, nBD, nBE, nDA, nDB, nRA,
         utils.formattaStringa(prefissoTelefonico, 5),
         utils.formattaStringa(numeroTelefonico, 10),
         utils.formattaStringa(indirizzoEmail, 60),
-        utils.formattaStringa('node-mud-rifiuti v0.0.1', 30) // Riservato,  può essere utilizzato liberamente in fase di presentazione della comunicazione per identificare il software che ha prodotto il file, oltre alla release del prodotto. In questo modo, se dovessero insorgere dei problemi in fase di acquisizione dell'elaborato, è possibile risalire all'identità ed alla versione del prodotto SW.
+        utils.formattaStringa('mudrifiuti.com v1.0.0', 30) // Riservato,  può essere utilizzato liberamente in fase di presentazione della comunicazione per identificare il software che ha prodotto il file, oltre alla release del prodotto. In questo modo, se dovessero insorgere dei problemi in fase di acquisizione dell'elaborato, è possibile risalire all'identità ed alla versione del prodotto SW.
     );
     if(callback)
         return callback(retVal.length != 482, retVal);
