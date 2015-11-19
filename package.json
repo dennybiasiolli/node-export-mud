@@ -1,6 +1,6 @@
 {
   "name": "export-mud",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Funzioni utili per l'esportazione del MUD Telematico",
   "main": "export-mud/index.js",
   "dependencies": {
@@ -27,10 +27,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://dennybiasiolli@bitbucket.org/dennybiasiolli/node-export-mud.git"
+    "url": "https://github.com/dennybiasiolli/node-export-mud.git"
   },
   "bugs": {
-    "url": "https://bitbucket.org/dennybiasiolli/node-export-mud/issues"
+    "url": "https://github.com/dennybiasiolli/node-export-mud/issues"
   },
-  "homepage": "https://bitbucket.org/dennybiasiolli/node-export-mud#readme"
+  "homepage": "https://github.com/dennybiasiolli/node-export-mud#readme"
 }
