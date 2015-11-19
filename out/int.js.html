@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.2">
+  <meta charset="utf-8">
+  <title>Source: int.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: int.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>/**
+ * Esportazione delle schede INT MUD
+ * @module int
+ * @memberof module:mud
+ * @author Denny Biasiolli
+ */
+
+var util = require(&#x27;util&#x27;);
+var utils = require(&#x27;./utils&#x27;);
+
+/** Esporta la riga relativa al record DA – Scheda INT – Rifiuti commercializzati e intermediati senza detenzione
+ * @param {string} annoRiferimentoDichiarazione Anno di riferimento della dichiarazione (AAAA)
+ * @param {string} codiceFiscale Codice fiscale identificativo
+ * @param {string} codUL Codice di identificazione univoca dell’unità locale
+ * @param {number} nProgressivoINT Numero d’ordine progressivo di scheda INT
+ * @param {string} codiceCER Codice del rifiuto SOLO CATALOGO EUROPEO
+ * @param {boolean} isSolidoPulverulento Stato fisico: Solido polverulento
+ * @param {boolean} isSolidoNonPulverulento Stato fisico: Solido NON polverulento
+ * @param {boolean} isFangosoPalabile Stato fisico: Fangoso palabile
+ * @param {boolean} isLiquido Stato fisico: Liquido
+ * @param {boolean} isAeriforme Stato fisico: Aeriforme
+ * @param {boolean} isVischiosoSciropposo Stato fisico: Vischioso e Sciropposo
+ * @param {boolean} isAltro Stato fisico: Altro
+ * @param {decimal} kgIntermediati Quantità complessivamente intermediata
+ * @param {number} nUO Numero di moduli (record) UO allegati
+ * @param {number} nUD Numero di moduli (record) UD allegati
+ * @param {utils.recordExportCallback} [callback] - Funzione di callback
+ * @return {string} (Se non gestito callback) Record DA – Scheda INT – Rifiuti commercializzati e intermediati senza detenzione
+ */
+exports.getRecordINT = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                                 nProgressivoINT, codiceCER,
+                                 isSolidoPulverulento, isSolidoNonPulverulento, isFangosoPalabile, isLiquido, isAeriforme, isVischiosoSciropposo, isAltro,
+                                 kgIntermediati, nUO, nUD,
+                                 callback)
+{
+    if(codiceCER &amp;amp;&amp;amp; typeof(codIstatAttivita) === &#x27;string&#x27;) codiceCER = codiceCER.replace(/\D+/g, &#x27;&#x27;);
+    var objIntermediati = utils.getOggettoValoreUM(kgIntermediati);
+    var retVal = util.format(
+        &#x27;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;&#x27;,
+        &#x27;DA&#x27;,
+        utils.formattaNumero(annoRiferimentoDichiarazione, 4),
+        utils.formattaStringa(codiceFiscale, 16),
+        utils.formattaStringa(codUL, 15),
+        utils.formattaNumero(nProgressivoINT, 4),
+        utils.formattaStringa(codiceCER, 6),
+        utils.formattaBoolean(isSolidoPulverulento),
+        utils.formattaBoolean(isSolidoNonPulverulento),
+        utils.formattaBoolean(isFangosoPalabile),
+        utils.formattaBoolean(isLiquido),
+        utils.formattaBoolean(isAeriforme),
+        utils.formattaBoolean(isVischiosoSciropposo),
+        utils.formattaBoolean(isAltro),
+        utils.formattaNumero(objIntermediati.valore, 7, 3),
+        utils.formattaNumero(objIntermediati.um, 1),
+        utils.formattaNumero(nUO, 5),
+        utils.formattaNumero(nUD, 5)
+    );
+    if(callback)
+        return callback(retVal.length != 93, retVal);
+    else
+        return retVal;
+}
+
+/** Esporta la riga generica relativa al record DB - Moduli UO – Unità di Origine del rifiuto.
+ * @param {string} annoRiferimentoDichiarazione Anno di riferimento della dichiarazione (AAAA)
+ * @param {string} codiceFiscale Codice fiscale identificativo
+ * @param {string} codUL Codice di identificazione univoca dell’unità locale
+ * @param {number} nProgressivoINT Numero d’ordine progressivo di scheda INT
+ * @param {string} codiceCER Codice del rifiuto SOLO CATALOGO EUROPEO
+ * @param {number} nProgressivoAllegato Numero progressivo dell&#x27;allegato
+ * @param {string} codiceFiscaleSoggetto Codice fiscale dell&#x27;unità locale di origine
+ * @param {string} ragioneSociale Descrizione della ragione sociale
+ * @param {number} istatProvincia ISTAT Provincia
+ * @param {number} istatComune ISTAT Comune
+ * @param {string} via Via
+ * @param {string} civico Nr. Civico
+ * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
+ * @param {decimal} kgQta Quantità acquisita
+ * @param {utils.recordExportCallback} [callback] - Funzione di callback
+ * @return {string} (Se non gestito callback) Record DB - Moduli UO – Unità di Origine del rifiuto.
+ */
+exports.getRecordINT_UO = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                                    nProgressivoINT, codiceCER,
+                                    nProgressivoAllegato,
+                                    codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                                    callback)
+{
+    return getRecordINT_UO_UD(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                              nProgressivoINT, codiceCER,
+                              &#x27;UO&#x27;, nProgressivoAllegato,
+                              codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                              callback);
+}
+
+/** Esporta la riga relativa al record DB - Moduli UD – Unità di Destinazione del rifiuto.
+ * @param {string} annoRiferimentoDichiarazione Anno di riferimento della dichiarazione (AAAA)
+ * @param {string} codiceFiscale Codice fiscale identificativo
+ * @param {string} codUL Codice di identificazione univoca dell’unità locale
+ * @param {number} nProgressivoINT Numero d’ordine progressivo di scheda INT
+ * @param {string} codiceCER Codice del rifiuto SOLO CATALOGO EUROPEO
+ * @param {number} nProgressivoAllegato Numero progressivo dell&#x27;allegato
+ * @param {string} codiceFiscaleSoggetto Codice fiscale dell&#x27;unità locale di destinazione
+ * @param {string} ragioneSociale Descrizione della ragione sociale
+ * @param {number} istatProvincia ISTAT Provincia
+ * @param {number} istatComune ISTAT Comune
+ * @param {string} via Via
+ * @param {string} civico Nr. Civico
+ * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
+ * @param {decimal} kgQta Quantità ceduta nell&#x27;anno
+ * @param {utils.recordExportCallback} [callback] - Funzione di callback
+ * @return {string} (Se non gestito callback) Record DB - Moduli UD – Unità di Destinazione del rifiuto.
+ */
+exports.getRecordINT_UD = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                                    nProgressivoINT, codiceCER,
+                                    nProgressivoAllegato,
+                                    codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                                    callback)
+{
+    return getRecordINT_UO_UD(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                              nProgressivoINT, codiceCER,
+                              &#x27;UD&#x27;, nProgressivoAllegato,
+                              codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                              callback);
+}
+
+/** Esporta la riga generica relativa al record DB - Moduli UO / UD – Allegati alla Scheda INT
+ * @param {string} annoRiferimentoDichiarazione Anno di riferimento della dichiarazione (AAAA)
+ * @param {string} codiceFiscale Codice fiscale identificativo
+ * @param {string} codUL Codice di identificazione univoca dell’unità locale
+ * @param {number} nProgressivoINT Numero d’ordine progressivo di scheda INT
+ * @param {string} codiceCER Codice del rifiuto SOLO CATALOGO EUROPEO
+ * @param {string} tipoAllegato Tipo allegato (UO / UD)
+ * @param {number} nProgressivoAllegato Numero progressivo dell&#x27;allegato
+ * @param {string} codiceFiscaleSoggetto Codice fiscale dell&#x27;unità locale di origine / destinazione
+ * @param {string} ragioneSociale Descrizione della ragione sociale
+ * @param {number} istatProvincia ISTAT Provincia
+ * @param {number} istatComune ISTAT Comune
+ * @param {string} via Via
+ * @param {string} civico Nr. Civico
+ * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
+ * @param {decimal} kgQta Quantità acquisita / ceduta nell&#x27;anno
+ * @param {utils.recordExportCallback} [callback] - Funzione di callback
+ * @return {string} (Se non gestito callback) Record DB - Moduli UO / UD – Allegati alla Scheda INT
+ */
+function getRecordINT_UO_UD(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                             nProgressivoINT, codiceCER,
+                             tipoAllegato, nProgressivoAllegato,
+                             codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                             callback)
+{
+    if(codiceCER &amp;amp;&amp;amp; typeof(codIstatAttivita) === &#x27;string&#x27;) codiceCER = codiceCER.replace(/\D+/g, &#x27;&#x27;);
+    if(typeof(nazioneEstera) == &#x27;string&#x27;) nazioneEstera = nazioneEstera.toString().toUpperCase();
+    if(nazioneEstera == &#x27;IT&#x27; || nazioneEstera == &#x27;ITALIA&#x27; || nazioneEstera == &#x27;ITALY&#x27;) nazioneEstera = null;
+    var objQta = utils.getOggettoValoreUM(kgQta);
+    var retVal = util.format(
+        &#x27;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;&#x27;,
+        &#x27;DB&#x27;,
+        utils.formattaNumero(annoRiferimentoDichiarazione, 4),
+        utils.formattaStringa(codiceFiscale, 16),
+        utils.formattaStringa(codUL, 15),
+        utils.formattaNumero(nProgressivoINT, 4),
+        utils.formattaStringa(codiceCER, 6),
+        utils.formattaStringa(tipoAllegato, 2),
+        utils.formattaNumero(nProgressivoAllegato, 5),
+        utils.formattaStringa(codiceFiscaleSoggetto, 16),
+        utils.formattaStringa(ragioneSociale, 60),
+        utils.formattaNumero(istatProvincia, 3),
+        utils.formattaNumero(istatComune, 3),
+        utils.formattaStringa(via, 30),
+        utils.formattaStringa(civico, 6),
+        utils.formattaStringa(nazioneEstera, 20),
+        utils.formattaNumero(objQta.valore, 7, 3),
+        utils.formattaNumero(objQta.um, 1)
+    );
+    if(callback)
+        return callback(retVal.length != 221, retVal);
+    else
+        return retVal;
+}
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.2 on October 14, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

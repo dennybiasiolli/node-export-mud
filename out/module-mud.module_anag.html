@@ -1,0 +1,1012 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.2">
+  <meta charset="utf-8">
+  <title>Module: anag</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">module</span>&nbsp;<span class="label label-static">static</span></div><small><a href="module-mud.html">mud</a>.<wbr></small><span class="symbol-name">anag</span></h1>
+            <p class="source-link">Source: <a href="anag.js.html">anag.<wbr>js</a></p>
+            <div class="symbol-description">
+              <p>Esportazione delle schede Anagrafiche MUD</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-mud.module_anag.html#.getRecordSA1">getRecordSA1()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-mud.module_anag.html#.getRecordSA_AUT">getRecordSA_AUT()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id=".getRecordSA1"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">getRecordSA1</span><span class="signature"><span class="signature-params">(annoRiferimentoDichiarazione, codiceFiscale, codUL, codIstatAttivita, nREA, nAddettiUL, ragioneSociale, ul_IstatProvincia, ul_IstatComune, ul_via, ul_civico, ul_cap, ul_prefissoTelefonico, ul_numeroTelefonico, sl_IstatProvincia, sl_IstatComune, sl_via, sl_civico, sl_cap, sl_prefissoTelefonico, sl_numeroTelefonico, cognomeLegaleRappr, nomeLegaleRappr, dataCompilazione, mesiAttivita, annullaPrecedente, dataComunicazioneSostituita[, callback])</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Esporta la riga relativa al record AA – Scheda SA-1 - Anagrafica azienda e anagrafica unita' locale</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>annoRiferimentoDichiarazione</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Anno di riferimento della dichiarazione (AAAA)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>codiceFiscale</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Codice fiscale identificativo</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>codUL</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Codice di identificazione univoca dell’unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>codIstatAttivita</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Codice ISTAT attività svolta (senza punti e lettere allineato a sinistra)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nREA</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>N. iscriz. Rep.Notizie Econ.Amm. (REA)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nAddettiUL</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Totale addetti nell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ragioneSociale</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Descrizione della ragione sociale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ul_IstatProvincia</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>ISTAT Provincia dell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ul_IstatComune</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>ISTAT Comune dell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ul_via</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Via dell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ul_civico</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Nr. civico dell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ul_cap</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>CAP dell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ul_prefissoTelefonico</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Prefisso telefonico dell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ul_numeroTelefonico</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Numero telefonico dell'unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>sl_IstatProvincia</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>ISTAT Provincia della sede legale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>sl_IstatComune</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>ISTAT Comune della sede legale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>sl_via</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Via della sede legale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>sl_civico</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Nr. civico della sede legale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>sl_cap</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>CAP della sede legale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>sl_prefissoTelefonico</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Prefisso telefonico della sede legale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>sl_numeroTelefonico</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Numero telefonico della sede legale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>cognomeLegaleRappr</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Cognome del legale rappresentante</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nomeLegaleRappr</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Mesi di attività nell'anno</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>dataCompilazione</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data di compilazione/stampa</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>mesiAttivita</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Mesi di attività nell'anno</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>annullaPrecedente</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Annulla e sostituisce</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>dataComunicazioneSostituita</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data della comunicazione sostituita</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p>utils.recordExportCallback</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Funzione di callback</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code>&nbsp;(Se non gestito callback) Record AA – Scheda SA-1 - Anagrafica azienda e anagrafica unita' locale</p>
+                </dd>
+              </dl>
+              <h3 id=".getRecordSA_AUT"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">getRecordSA_AUT</span><span class="signature"><span class="signature-params">(annoRiferimentoDichiarazione, codiceFiscale, codUL, nRIF, nINT, isAUT, isROT, isFRA, nTRA_RAEE, nCR_RAEE, isIMB, VFU_dataAut208, VFU_dataAut216, RAEE_dataAut208, RAEE_dataAut216, EMAS_dataCert, EMAS_numCert, ISO14000_dataCert, isIncenerimento, incen_capacitaAutTot_Peric, incen_capacitaAutTot_NonPeric, isConcenerimento, concen_capacitaAutTot_Peric, concen_capacitaAutTot_NonPeric, classificazioneDiscarica_1, tonnDepositateNellAnno_1, classificazioneDiscarica_2, tonnDepositateNellAnno_2, classificazioneDiscarica_3, tonnDepositateNellAnno_3, classificazioneDiscarica_4, tonnDepositateNellAnno_4, classificazioneDiscarica_5, tonnDepositateNellAnno_5[, callback])</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Esporta la riga relativa al record AB – Scheda SA-AUT - Autorizzazioni e Riassuntiva</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>annoRiferimentoDichiarazione</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Anno di riferimento della dichiarazione (AAAA)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>codiceFiscale</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Codice fiscale identificativo</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>codUL</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Codice di identificazione univoca dell’unità locale</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nRIF</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sezione Rifiuti, numero di schede RIF</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nINT</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sez. Intermediazione,numero di schede INT</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>isAUT</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sezione Veicoli, Compilata Scheda AUT</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>isROT</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sezione Veicoli, Compilata Scheda ROT</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>isFRA</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sezione Veicoli, Compilata Scheda FRA</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nTRA_RAEE</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sezione RAEE, numero di schede TRA-RAEE</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nCR_RAEE</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sezione RAEE, numero di schede CR-RAEE</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>isIMB</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Sezione Imballaggi, Compilata Scheda IMB</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>VFU_dataAut208</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>VFU - Data autorizzazione ART. 208, 209, 213 del D.Lgs. 152/2006 così come modificato dal D.Lgs. 205/2010</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>VFU_dataAut216</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>VFU - Data autorizzazione ART. 216 del D.Lgs. 152/2006 così come modificato dal D.Lgs. 205/2010</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>RAEE_dataAut208</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>RAEE - RAEE -Data autorizzazione ART. 208, 209, 213 del D.Lgs. 152/2006 così come modificato dal D.Lgs. 205/2010</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>RAEE_dataAut216</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>RAEE - RAEE -Data autorizzazione ART. 216 del D.Lgs. 152/2006 così come modificato dal D.Lgs. 205/2010</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>EMAS_dataCert</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data certificazione EMAS</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>EMAS_numCert</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Numero registrazione certificazione EMAS</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ISO14000_dataCert</p>
+                      </td>
+                      <td>
+                        <p>date</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data certificazione ISO 14000</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>isIncenerimento</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Incenerimento</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>incen_capacitaAutTot_Peric</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Capacità autorizzata relativa a rifiuti pericolosi (t/a)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>incen_capacitaAutTot_NonPeric</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Capacità autorizzata relativa a rifiuti non pericolosi (t/a)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>isConcenerimento</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Concenerimento</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>concen_capacitaAutTot_Peric</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Capacità autorizzata relativa a rifiuti pericolosi (t/a)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>concen_capacitaAutTot_NonPeric</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Capacità autorizzata relativa a rifiuti non pericolosi (t/a)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>classificazioneDiscarica_1</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Classificazione della discarica: 0=ND, 6=Rifiuti pericolosi, 7=Rifiuti non pericolosi, 8=Rifiuti inerti</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>tonnDepositateNellAnno_1</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Quantità in tonnellate depositata in discarica nell’anno</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>classificazioneDiscarica_2</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Classificazione della discarica: 0=ND, 6=Rifiuti pericolosi, 7=Rifiuti non pericolosi, 8=Rifiuti inerti</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>tonnDepositateNellAnno_2</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Quantità in tonnellate depositata in discarica nell’anno</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>classificazioneDiscarica_3</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Classificazione della discarica: 0=ND, 6=Rifiuti pericolosi, 7=Rifiuti non pericolosi, 8=Rifiuti inerti</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>tonnDepositateNellAnno_3</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Quantità in tonnellate depositata in discarica nell’anno</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>classificazioneDiscarica_4</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Classificazione della discarica: 0=ND, 6=Rifiuti pericolosi, 7=Rifiuti non pericolosi, 8=Rifiuti inerti</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>tonnDepositateNellAnno_4</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Quantità in tonnellate depositata in discarica nell’anno</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>classificazioneDiscarica_5</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Classificazione della discarica: 0=ND, 6=Rifiuti pericolosi, 7=Rifiuti non pericolosi, 8=Rifiuti inerti</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>tonnDepositateNellAnno_5</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Quantità in tonnellate depositata in discarica nell’anno</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p>utils.recordExportCallback</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Funzione di callback</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code>&nbsp;(Se non gestito callback) Record AB – Scheda SA-AUT - Autorizzazioni e Riassuntiva</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.2 on October 14, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

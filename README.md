@@ -1,13 +1,13 @@
-export-mud - Funzioni utili per l'esportazione del MUD Telematico
+export-mud - Funzioni utili per l'esportazione dei tracciati del MUD Telematico
 
-## Installation
+## Installazione
 
     npm install export-mud
 
-## Usage
+## Utilizzo
 
     var exportMud = require('export-mud')
 
 
-Instructions coming soon!
+Consultare la cartella "out" per la documentazione jsdoc.
 
