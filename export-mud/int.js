@@ -33,7 +33,7 @@ exports.getRecordINT = function(annoRiferimentoDichiarazione, codiceFiscale, cod
                                  kgIntermediati, nUO, nUD,
                                  callback)
 {
-    if(codiceCER && typeof(codIstatAttivita) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
+    if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     var objIntermediati = utils.getOggettoValoreUM(kgIntermediati);
     var retVal = util.format(
         '%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;',
@@ -75,20 +75,20 @@ exports.getRecordINT = function(annoRiferimentoDichiarazione, codiceFiscale, cod
  * @param {string} via Via
  * @param {string} civico Nr. Civico
  * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
- * @param {decimal} kgQta Quantità acquisita
+ * @param {decimal} kgQtaDichiarata Quantità acquisita
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record DB - Moduli UO – Unità di Origine del rifiuto.
  */
 exports.getRecordINT_UO = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                                     nProgressivoINT, codiceCER,
                                     nProgressivoAllegato,
-                                    codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                                    codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQtaDichiarata,
                                     callback)
 {
     return getRecordINT_UO_UD(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               nProgressivoINT, codiceCER,
                               'UO', nProgressivoAllegato,
-                              codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                              codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQtaDichiarata,
                               callback);
 }
 
@@ -106,20 +106,20 @@ exports.getRecordINT_UO = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {string} via Via
  * @param {string} civico Nr. Civico
  * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
- * @param {decimal} kgQta Quantità ceduta nell'anno
+ * @param {decimal} kgQtaDichiarata Quantità ceduta nell'anno
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record DB - Moduli UD – Unità di Destinazione del rifiuto.
  */
 exports.getRecordINT_UD = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                                     nProgressivoINT, codiceCER,
                                     nProgressivoAllegato,
-                                    codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                                    codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQtaDichiarata,
                                     callback)
 {
     return getRecordINT_UO_UD(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               nProgressivoINT, codiceCER,
                               'UD', nProgressivoAllegato,
-                              codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                              codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQtaDichiarata,
                               callback);
 }
 
@@ -138,20 +138,20 @@ exports.getRecordINT_UD = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {string} via Via
  * @param {string} civico Nr. Civico
  * @param {string} nazioneEstera Paese estero (solo se di origine non nazionale)
- * @param {decimal} kgQta Quantità acquisita / ceduta nell'anno
+ * @param {decimal} kgQtaDichiarata Quantità acquisita / ceduta nell'anno
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record DB - Moduli UO / UD – Allegati alla Scheda INT
  */
 function getRecordINT_UO_UD(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                              nProgressivoINT, codiceCER,
                              tipoAllegato, nProgressivoAllegato,
-                             codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQta,
+                             codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, nazioneEstera, kgQtaDichiarata,
                              callback)
 {
-    if(codiceCER && typeof(codIstatAttivita) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
+    if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();
     if(nazioneEstera == 'IT' || nazioneEstera == 'ITALIA' || nazioneEstera == 'ITALY') nazioneEstera = null;
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     var retVal = util.format(
         '%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;',
         'DB',

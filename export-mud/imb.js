@@ -64,16 +64,16 @@ exports.getRecordIMB = function(annoRiferimentoDichiarazione, codiceFiscale, cod
  * @param {string} codUL Codice di identificazione univoca dell’unità locale
  * @param {string} codiceCER Codice del rifiuto SOLO CATALOGO EUROPEO
  * @param {string} tipoRifiuto Tipo di Rifiuto (RC=Ricevuto da circuito CONAI, RX=Ricevuto da circuito Extra CONAI, PP=Prodotto nell'unità locale)
- * @param {decimal} kgQta Quantità
+ * @param {decimal} kgQtaDichiarata Quantità
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record IB – Scheda IMB - Dettaglio dei Codici CER Ricevuti, Prodotti
  */
 exports.getRecordIMB_Det = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                                      codiceCER,
-                                     tipoRifiuto, kgQta,
+                                     tipoRifiuto, kgQtaDichiarata,
                                      callback)
 {
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     var retVal = util.format(
         '%s;%s;%s;%s;%s;%s;%s;%s;',
         'IB',
@@ -104,7 +104,7 @@ exports.getRecordIMB_Det = function(annoRiferimentoDichiarazione, codiceFiscale,
  * @param {string} via Via (Valorizzare solo per Privati=NO)
  * @param {string} civico Nr. Civico (Valorizzare solo per Privati=NO)
  * @param {string} cap CAP (Valorizzare solo per Privati=NO)
- * @param {decimal} kgQta Quantità dichiarata ricevuta
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata ricevuta
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre)
  * @param {number} provenienzaRifiuto Provenienza del rifiuto (Circuito CONAI = 1, Circuito extra CONAI = 2)
@@ -115,14 +115,14 @@ exports.getRecordIMB_RT = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                     codiceCER,
                                     nProgressivoAllegato,
                                     codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                                    kgQta, nazioneEstera, codRegolamentoCEE_1013_2006, provenienzaRifiuto,
+                                    kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, provenienzaRifiuto,
                                     callback)
 {
     return getRecordIMB_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               codiceCER,
                               'RT', nProgressivoAllegato,
                               codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                              kgQta, nazioneEstera, codRegolamentoCEE_1013_2006, provenienzaRifiuto,
+                              kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, provenienzaRifiuto,
                               callback);
 }
 
@@ -134,7 +134,7 @@ exports.getRecordIMB_RT = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {number} nProgressivoAllegato Numero progressivo dell'allegato “TE-IMB”
  * @param {string} codiceFiscaleSoggetto Codice fiscale del soggetto che ha trasportato (TE) il rifiuto
  * @param {string} ragioneSociale Nome o Ragione sociale
- * @param {decimal} kgQta Quantità dichiarata trasportata
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata trasportata
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record IC – Scheda TE-IMB – Elenco dei Vettori utilizzati
  */
@@ -142,14 +142,14 @@ exports.getRecordIMB_TE = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                     codiceCER,
                                     nProgressivoAllegato,
                                     codiceFiscaleSoggetto, ragioneSociale,
-                                    kgQta,
+                                    kgQtaDichiarata,
                                     callback)
 {
     return getRecordIMB_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               codiceCER,
                               'TE', nProgressivoAllegato,
                               codiceFiscaleSoggetto, ragioneSociale, 0, 0, '', '', '',
-                              kgQta, '', '', 0,
+                              kgQtaDichiarata, '', '', 0,
                               callback);
 }
 
@@ -167,7 +167,7 @@ exports.getRecordIMB_TE = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {string} via Via (Valorizzare solo per modulo RT-IMB e Privati=NO)
  * @param {string} civico Nr. Civico (Valorizzare solo per modulo RT-IMB e Privati=NO)
  * @param {string} cap CAP (Valorizzare solo per modulo RT-IMB e Privati=NO)
- * @param {decimal} kgQta Quantità dichiarata (Ricevuta per modulo RT-IMB, Trasportata per modulo TE-IMB)
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata (Ricevuta per modulo RT-IMB, Trasportata per modulo TE-IMB)
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero) (Valorizzare solo per modulo RT-IMB)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre) (Valorizzare solo per modulo RT-IMB)
  * @param {number} provenienzaRifiuto Provenienza del rifiuto (Circuito CONAI = 1, Circuito extra CONAI = 2)
@@ -178,11 +178,11 @@ function getRecordIMB_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                              codiceCER,
                              tipoAllegato, nProgressivoAllegato,
                              codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                             kgQta, nazioneEstera, codRegolamentoCEE_1013_2006, provenienzaRifiuto,
+                             kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, provenienzaRifiuto,
                              callback)
 {
     if(tipoAllegato != 'RT') { nazioneEstera = '';  codRegolamentoCEE_1013_2006 = ''; codiceFiscaleSoggetto = '';  ragioneSociale = '';  istatProvincia = 0;  istatComune = 0;  via = '';  civico = ''; cap = ''; provenienzaRifiuto = 0; }
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();
     if(nazioneEstera == 'IT' || nazioneEstera == 'ITALIA' || nazioneEstera == 'ITALY') nazioneEstera = null;
     var retVal = util.format(
@@ -227,7 +227,7 @@ function getRecordIMB_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
  * @param {string} via Via
  * @param {string} civico Nr. Civico
  * @param {string} cap CAP
- * @param {decimal} kgQta Quantità dichiarata
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre)
  * @param {} kg01 R/D1) Quantità conferita nell’anno
@@ -265,11 +265,11 @@ exports.getRecordIMB_DR = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                      codiceCER,
                                      nProgressivoAllegato,
                                      codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                                     kgQta, nazioneEstera, codRegolamentoCEE_1013_2006,
+                                     kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006,
                                      kg01, tipo01, kg02, tipo02, kg03, tipo03, kg04, tipo04, kg05, tipo05, kg06, tipo06, kg07, tipo07, kg08, tipo08, kg09, tipo09, kg10, tipo10, kg11, tipo11, kg12, tipo12, kg13, tipo13, kgD14, kgD15,
                                      callback)
 {
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();
     if(nazioneEstera == 'IT' || nazioneEstera == 'ITALIA' || nazioneEstera == 'ITALY') nazioneEstera = null;
     var obj01 = utils.getOggettoValoreUM(kg01);

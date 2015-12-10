@@ -82,18 +82,18 @@ exports.getRecordRAEE = function(annoRiferimentoDichiarazione, codiceFiscale, co
  * @param {number} categoriaRAEE Categoria RAEE “Valore ammesso compreso tra 1 e 10”
  * @param {string} codiceCER Codice del rifiuto SOLO CATALOGO EUROPEO
  * @param {string} tipoRifiuto Tipo di Rifiuto (DR=Domestico Raccolto/Ricevuto,PR=Professionale Raccolto/Ricevuto, PP=Prodotto nell'unità locale) Da valorizzare solo per Tipo di Scheda = "TRA". Lasciare vuoto per Tipo di Scheda = “CRR”
- * @param {decimal} kgQta Quantità
+ * @param {decimal} kgQtaDichiarata Quantità
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record RB – Schede TRA-RAEE / CR-RAEE - Dettaglio dei Codici CER Raccolti, Ricevuti, Prodotti
  */
 exports.getRecordRAEE_Det = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                                       tipoScheda, categoriaRAEE,
                                       codiceCER,
-                                      tipoRifiuto, kgQta,
+                                      tipoRifiuto, kgQtaDichiarata,
                                       callback)
 {
     if(tipoScheda == 'CRR') tipoRifiuto = '';
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     var retVal = util.format(
         '%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;',
         'RB',
@@ -128,7 +128,7 @@ exports.getRecordRAEE_Det = function(annoRiferimentoDichiarazione, codiceFiscale
  * @param {string} via Via (Valorizzare solo per Privati=NO)
  * @param {string} civico Nr. Civico (Valorizzare solo per Privati=NO)
  * @param {string} cap CAP (Valorizzare solo per Privati=NO)
- * @param {decimal} kgQta Quantità dichiarata ricevuta
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata ricevuta
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre)
  * @param {boolean} isSoggettoPrivato Soggetto che ha conferito il rifiuto: Privati
@@ -140,7 +140,7 @@ exports.getRecordRAEE_RT = function(annoRiferimentoDichiarazione, codiceFiscale,
                                      codiceCER,
                                      nProgressivoAllegato,
                                      codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                                     kgQta, nazioneEstera, codRegolamentoCEE_1013_2006, isSoggettoPrivato,
+                                     kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, isSoggettoPrivato,
                                      callback)
 {
     return getRecordRAEE_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
@@ -148,7 +148,7 @@ exports.getRecordRAEE_RT = function(annoRiferimentoDichiarazione, codiceFiscale,
                                codiceCER,
                                'RT', nProgressivoAllegato,
                                codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                               kgQta, nazioneEstera, codRegolamentoCEE_1013_2006, isSoggettoPrivato,
+                               kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, isSoggettoPrivato,
                                callback);
 }
 
@@ -162,7 +162,7 @@ exports.getRecordRAEE_RT = function(annoRiferimentoDichiarazione, codiceFiscale,
  * @param {number} nProgressivoAllegato Numero progressivo dell'allegato “TE-RAEE”
  * @param {string} codiceFiscaleSoggetto Codice fiscale del soggetto che ha trasportato (TE) il rifiuto
  * @param {string} ragioneSociale Nome o Ragione sociale
- * @param {decimal} kgQta Quantità dichiarata trasportata
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata trasportata
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record RC – Moduli TE-RAEE – Elenco dei Vettori Utilizzati
  */
@@ -171,7 +171,7 @@ exports.getRecordRAEE_TE = function(annoRiferimentoDichiarazione, codiceFiscale,
                                      codiceCER,
                                      nProgressivoAllegato,
                                      codiceFiscaleSoggetto, ragioneSociale,
-                                     kgQta,
+                                     kgQtaDichiarata,
                                      callback)
 {
     return getRecordRAEE_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
@@ -179,7 +179,7 @@ exports.getRecordRAEE_TE = function(annoRiferimentoDichiarazione, codiceFiscale,
                                codiceCER,
                                'TE', nProgressivoAllegato,
                                codiceFiscaleSoggetto, ragioneSociale, 0, 0, '', '', '',
-                               kgQta, '', '', false,
+                               kgQtaDichiarata, '', '', false,
                                callback);
 }
 
@@ -199,7 +199,7 @@ exports.getRecordRAEE_TE = function(annoRiferimentoDichiarazione, codiceFiscale,
  * @param {string} via Via (Valorizzare solo per modulo RT-RAEE e Privati=NO)
  * @param {string} civico Nr. Civico (Valorizzare solo per modulo RT-RAEE e Privati=NO)
  * @param {string} cap CAP (Valorizzare solo per modulo RT-RAEE e Privati=NO)
- * @param {decimal} kgQta Quantità dichiarata (Ricevuta per modulo RT-RAEE, Trasportata per modulo TE-RAEE)
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata (Ricevuta per modulo RT-RAEE, Trasportata per modulo TE-RAEE)
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero) (Valorizzare solo per modulo RT-RAEE)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre) (Valorizzare solo per modulo RT-RAEE)
  * @param {boolean} isSoggettoPrivato Soggetto che ha conferito il rifiuto: Privati (Valorizzare solo per modulo RT-RAEE)
@@ -211,12 +211,12 @@ function getRecordRAEE_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               codiceCER,
                               tipoAllegato, nProgressivoAllegato,
                               codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                              kgQta, nazioneEstera, codRegolamentoCEE_1013_2006, isSoggettoPrivato,
+                              kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, isSoggettoPrivato,
                               callback)
 {
     if(tipoAllegato != 'RT') { nazioneEstera = '';  codRegolamentoCEE_1013_2006 = '';  isSoggettoPrivato = false; }
     if(tipoAllegato != 'RT' || isSoggettoPrivato) { codiceFiscaleSoggetto = '';  ragioneSociale = '';  istatProvincia = 0;  istatComune = 0;  via = '';  civico = ''; cap = ''; }
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();
     if(nazioneEstera == 'IT' || nazioneEstera == 'ITALIA' || nazioneEstera == 'ITALY') nazioneEstera = null;
     var retVal = util.format(
@@ -265,7 +265,7 @@ function getRecordRAEE_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
  * @param {string} via Via
  * @param {string} civico Nr. Civico
  * @param {string} cap CAP
- * @param {decimal} kgQta Quantità dichiarata
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre)
  * @param {} kg01 R/D1) Quantità conferita nell’anno
@@ -304,11 +304,11 @@ exports.getRecordRAEE_DR = function(annoRiferimentoDichiarazione, codiceFiscale,
                                      codiceCER,
                                      nProgressivoAllegato,
                                      codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                                     kgQta, nazioneEstera, codRegolamentoCEE_1013_2006,
+                                     kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006,
                                      kg01, tipo01, kg02, tipo02, kg03, tipo03, kg04, tipo04, kg05, tipo05, kg06, tipo06, kg07, tipo07, kg08, tipo08, kg09, tipo09, kg10, tipo10, kg11, tipo11, kg12, tipo12, kg13, tipo13, kgD14, kgD15,
                                      callback)
 {
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();
     if(nazioneEstera == 'IT' || nazioneEstera == 'ITALIA' || nazioneEstera == 'ITALY') nazioneEstera = null;
     var obj01 = utils.getOggettoValoreUM(kg01);

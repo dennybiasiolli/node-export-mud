@@ -99,16 +99,16 @@ exports.getRecordVFU = function(annoRiferimentoDichiarazione, codiceFiscale, cod
  * @param {string} tipoScheda Tipo di SCHEDA "AUT" / "FRA" / "ROT" – Autodemolitore / Frantumatore / Rottamatore
  * @param {string} tipoSezione Tipo sezione di rifermento nella scheda (AUT / FRA / ROT): “RT” = Ricevuto da Terzi / “PP” = Prodotto nell’Unità Locale
  * @param {string} codiceCER Codice del rifiuto SOLO CATALOGO EUROPEO
- * @param {decimal} kgQta Quantità dichiarata
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record VD – Schede AUT / FRA / ROT – Autodemolitore / Frantumatore / Rottamatore
  */
 exports.getRecordVFU_Det = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                                      tipoScheda,
-                                     tipoSezione, codiceCER, kgQta,
+                                     tipoSezione, codiceCER, kgQtaDichiarata,
                                      callback)
 {
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     var retVal = util.format(
         '%s;%s;%s;%s;%s;%s;%s;%s;%s;',
         'VD',
@@ -143,7 +143,7 @@ exports.getRecordVFU_Det = function(annoRiferimentoDichiarazione, codiceFiscale,
  * @param {string} via Via (Valorizzare solo per Privati=NO)
  * @param {string} civico Nr. Civico (Valorizzare solo per Privati=NO)
  * @param {string} cap CAP (Valorizzare solo per Privati=NO)
- * @param {decimal} kgQta Quantità dichiarata ricevuta
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata ricevuta
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre)
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
@@ -153,14 +153,14 @@ exports.getRecordVFU_RT = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                     tipoScheda, codiceCER,
                                     nProgressivoAllegato,
                                     isSoggettoPrivato, codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                                    kgQta, nazioneEstera, codRegolamentoCEE_1013_2006,
+                                    kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006,
                                     callback)
 {
     return getRecordVFU_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               tipoScheda, codiceCER,
                               'RT', nProgressivoAllegato,
                               isSoggettoPrivato, codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                              kgQta, nazioneEstera, codRegolamentoCEE_1013_2006,
+                              kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006,
                               callback);
 }
 
@@ -174,21 +174,21 @@ exports.getRecordVFU_RT = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {number} nProgressivoAllegato Numero progressivo dell'allegato
  * @param {string} codiceFiscaleSoggetto Codice fiscale del soggetto che ha trasportato il rifiuto
  * @param {string} ragioneSociale Nome o Ragione sociale
- * @param {decimal} kgQta Quantità dichiarata (Ricevuta per modulo RT-VEIC, Trasportata per modulo TE-VEIC)
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata (Ricevuta per modulo RT-VEIC, Trasportata per modulo TE-VEIC)
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record VE – Moduli TE-VEIC - Trasportatori cui è stato affidato il rifiuto
  */
 exports.getRecordVFU_TE = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                                     tipoScheda, codiceCER,
                                     nProgressivoAllegato,
-                                    codiceFiscaleSoggetto, ragioneSociale, kgQta,
+                                    codiceFiscaleSoggetto, ragioneSociale, kgQtaDichiarata,
                                     callback)
 {
     return getRecordVFU_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               tipoScheda, codiceCER,
                               'TE', nProgressivoAllegato,
                               false, codiceFiscaleSoggetto, ragioneSociale, 0, 0, '', '', '',
-                              kgQta, '', '',
+                              kgQtaDichiarata, '', '',
                               callback);
 }
 
@@ -209,7 +209,7 @@ exports.getRecordVFU_TE = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {string} via Via (Valorizzare solo per modulo RT-VEIC e Privati=NO)
  * @param {string} civico Nr. Civico (Valorizzare solo per modulo RT-VEIC e Privati=NO)
  * @param {string} cap CAP (Valorizzare solo per modulo RT-VEIC e Privati=NO)
- * @param {decimal} kgQta Quantità dichiarata (Ricevuta per modulo RT-VEIC, Trasportata per modulo TE-VEIC)
+ * @param {decimal} kgQtaDichiarata Quantità dichiarata (Ricevuta per modulo RT-VEIC, Trasportata per modulo TE-VEIC)
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero) (Valorizzare solo per modulo RT-VEIC)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre) (Valorizzare solo per modulo RT-VEIC)
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
@@ -219,12 +219,12 @@ function getRecordVFU_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                              tipoScheda, codiceCER,
                              tipoAllegato, nProgressivoAllegato,
                              isSoggettoPrivato, codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                             kgQta, nazioneEstera, codRegolamentoCEE_1013_2006,
+                             kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006,
                              callback)
 {
     if(tipoAllegato != 'RT') { nazioneEstera = '';  codRegolamentoCEE_1013_2006 = '';  isSoggettoPrivato = false; }
     if(tipoAllegato != 'RT' || isSoggettoPrivato) { codiceFiscaleSoggetto = '';  ragioneSociale = '';  istatProvincia = 0;  istatComune = 0;  via = '';  civico = ''; cap = ''; }
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();
     if(nazioneEstera == 'IT' || nazioneEstera == 'ITALIA' || nazioneEstera == 'ITALY') nazioneEstera = null;
     var retVal = util.format(
@@ -271,7 +271,7 @@ function getRecordVFU_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
  * @param {string} via Via
  * @param {string} civico Nr. Civico
  * @param {string} cap CAP
- * @param {decimal} kgQta Quantità totale conferita nell'anno
+ * @param {decimal} kgQtaDichiarata Quantità totale conferita nell'anno
  * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero)
  * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre)
  * @param {} kg01 R/D1) Quantità conferita nell’anno
@@ -310,11 +310,11 @@ exports.getRecordVFU_DR = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                     codiceCER,
                                     nProgressivoAllegato,
                                     codiceFiscaleSoggetto, ragioneSociale, istatProvincia, istatComune, via, civico, cap,
-                                    kgQta, nazioneEstera, codRegolamentoCEE_1013_2006,
+                                    kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006,
                                     kg01, tipo01, kg02, tipo02, kg03, tipo03, kg04, tipo04, kg05, tipo05, kg06, tipo06, kg07, tipo07, kg08, tipo08, kg09, tipo09, kg10, tipo10, kg11, tipo11, kg12, tipo12, kg13, tipo13, kgD14, kgD15,
                                     callback)
 {
-    var objQta = utils.getOggettoValoreUM(kgQta);
+    var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();
     if(nazioneEstera == 'IT' || nazioneEstera == 'ITALIA' || nazioneEstera == 'ITALY') nazioneEstera = null;
     var obj01 = utils.getOggettoValoreUM(kg01);
