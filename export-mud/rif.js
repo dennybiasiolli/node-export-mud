@@ -44,7 +44,7 @@ exports.getRecordRIF = function(annoRiferimentoDichiarazione, codiceFiscale, cod
                                  kgGiacDaAvviareRec, kgGiacDaAvviareSmalt, kgAvviatoRec, kgAvviatoSmalt,
                                  callback)
 {
-    if(codiceCER && typeof(codIstatAttivita) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
+    if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     var objProdottoUL = utils.getOggettoValoreUM(kgProdottoUL);
     var objRicTerzi = utils.getOggettoValoreUM(kgRicTerzi);
     var objProdFuoriUL = utils.getOggettoValoreUM(kgProdFuoriUL);
@@ -185,8 +185,6 @@ exports.getRecordRIF_DR = function(annoRiferimentoDichiarazione, codiceFiscale, 
  * @param {number} nProgressivoAllegato Numero progressivo dell'allegato
  * @param {string} codiceFiscaleSoggetto Codice fiscale del soggetto che ha trasportato (TE)
  * @param {string} ragioneSociale Nome o Ragione sociale
- * @param {string} nazioneEstera Nome della nazione (solo se trattasi di paese Estero)
- * @param {string} codRegolamentoCEE_1013_2006 Codice Regolamento CEE 1013/2006 (2 lettere + 4 cifre)
  * @param {utils.recordExportCallback} [callback] - Funzione di callback
  * @return {string} (Se non gestito callback) Record BB – Modulo TE - Rifiuti trasportati da terzi.
  */
@@ -194,14 +192,13 @@ exports.getRecordRIF_TE = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                     nProgressivoRIF, codiceCER,
                                     nProgressivoAllegato,
                                     codiceFiscaleSoggetto, ragioneSociale,
-                                    nazioneEstera, codRegolamentoCEE_1013_2006,
                                     callback)
 {
     return getRecordRIF_RT_DR_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                                  nProgressivoRIF, codiceCER,
                                  'TE', nProgressivoAllegato,
                                  codiceFiscaleSoggetto, ragioneSociale, null, null, null, null, null, null,
-                                 nazioneEstera, codRegolamentoCEE_1013_2006,
+                                 null, null,
                                  false, null, null, null,
                                  callback);
 }
@@ -239,7 +236,7 @@ function getRecordRIF_RT_DR_TE(annoRiferimentoDichiarazione, codiceFiscale, codU
                                 isRicevutoPrivati, kgQtaSmaltimento, kgQtaRecuperoMateria, kgQtaRecuperoEnergia,
                                 callback)
 {
-    if(codiceCER && typeof(codIstatAttivita) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
+    if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     var out_codiceFiscaleSoggetto = (tipoAllegato == 'RT' && isRicevutoPrivati ? '' : codiceFiscaleSoggetto);
     var out_ragioneSociale = (tipoAllegato == 'RT' && isRicevutoPrivati ? '' : ragioneSociale);
     var out_istatProvincia = (tipoAllegato == 'DR' || tipoAllegato == 'RT' ? istatProvincia : 0);
@@ -310,7 +307,7 @@ exports.getRecordRIF_RE = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                     attivitaOrig, kgQtaDichiarata,
                                     callback)
 {
-    if(codiceCER && typeof(codIstatAttivita) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
+    if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     var objQtaDichiarata = utils.getOggettoValoreUM(kgQtaDichiarata);
     var retVal = util.format(
         '%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;',
@@ -384,7 +381,7 @@ exports.getRecordRIF_MG = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                     kgGiacDaAvviareRec, kgGiacDaAvviareSmalt,
                                     callback)
 {
-    if(codiceCER && typeof(codIstatAttivita) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
+    if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     var objD02 = utils.getOggettoValoreUM(kgD02);
     var objD03 = utils.getOggettoValoreUM(kgD03);
     var objD04 = utils.getOggettoValoreUM(kgD04);

@@ -406,7 +406,7 @@ exports.getRecordIMB_MG = function(annoRiferimentoDichiarazione, codiceFiscale, 
                                      kgGiacDaAvviareRec, kgGiacDaAvviareSmalt,
                                      callback)
 {
-    if(codiceCER && typeof(codIstatAttivita) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
+    if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     var objD02 = utils.getOggettoValoreUM(kgD02);
     var objD03 = utils.getOggettoValoreUM(kgD03);
     var objD04 = utils.getOggettoValoreUM(kgD04);
