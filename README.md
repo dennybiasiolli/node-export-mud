@@ -14,6 +14,7 @@ Versione 2015
 
 ## Creazione documentazione
 
+    npm install
     jsdoc . -r -c conf.json -R README.md --template node_modules\jsdoc-baseline\
 
 Consultare la cartella "out" per la documentazione jsdoc.
