@@ -163,6 +163,34 @@ function getRecordMAT_VFU(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                         callback);
 }
 
+/** Esporta la riga generica relativa al record MA(IMB) – Scheda Materiali secondari
+ * @param {string} annoRiferimentoDichiarazione Anno di riferimento della dichiarazione (AAAA)
+ * @param {string} codiceFiscale Codice fiscale identificativo
+ * @param {string} codUL Codice di identificazione univoca dell’unità locale
+ * @param {decimal} kgRottVetro Rottami di vetro
+ * @param {decimal} kgRottFerroAcciaio Rottami di ferro e acciaio
+ * @param {decimal} kgRottAlluminio Rottami di alluminio
+ * @param {decimal} kgCartaCartone Carta e cartone
+ * @param {decimal} kgPlastica Plastica
+ * @param {decimal} kgLegno Legno
+ * @param {decimal} kgAltro Altro
+ * @param {utils.recordExportCallback} [callback] - Funzione di callback
+ * @return {string} (Se non gestito callback) Record MA(IMB) – Scheda Materiali secondari
+ */
+exports.getRecordMAT_IMB = function(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                                     kgRottVetro, kgRottFerroAcciaio, kgRottAlluminio,
+                                     kgCartaCartone, kgPlastica, kgLegno, kgAltro,
+                                     callback)
+{
+    return getRecordMAT(annoRiferimentoDichiarazione, codiceFiscale, codUL,
+                        'IMB', 0,
+                        0, 0, 0, 0, 0,
+                        kgRottVetro, kgRottFerroAcciaio, kgRottAlluminio, 0,
+                        kgCartaCartone, kgPlastica, 0, 0, 0, 0, 0,
+                        0, 0, kgLegno, 0, kgAltro,
+                        callback);
+}
+
 /** Esporta la riga generica relativa al record MA – Scheda Materiali secondari
  * @param {string} annoRiferimentoDichiarazione Anno di riferimento della dichiarazione (AAAA)
  * @param {string} codiceFiscale Codice fiscale identificativo
@@ -279,3 +307,4 @@ function getRecordMAT(annoRiferimentoDichiarazione, codiceFiscale, codUL,
     else
         return retVal;
 }
+exports.getRecordMAT = getRecordMAT;
