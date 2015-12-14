@@ -181,6 +181,7 @@ function getRecordIMB_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                              kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, provenienzaRifiuto,
                              callback)
 {
+    tipoAllegato = tipoAllegato.toUpperCase();
     if(tipoAllegato != 'RT') { nazioneEstera = '';  codRegolamentoCEE_1013_2006 = ''; codiceFiscaleSoggetto = '';  ragioneSociale = '';  istatProvincia = 0;  istatComune = 0;  via = '';  civico = ''; cap = ''; provenienzaRifiuto = 0; }
     var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     if(typeof(nazioneEstera) == 'string') nazioneEstera = nazioneEstera.toString().toUpperCase();

@@ -229,6 +229,7 @@ function getRecordMAT(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                        kgFanghi, kgFertilizzanti, kgLegno, kgGomma, kgAltro,
                        callback)
 {
+    tipoSchedaRiferimento = tipoSchedaRiferimento.toUpperCase();
     if(tipoSchedaRiferimento != 'TRA') categoriaRAEE = 0;
     var objAmmCompVerde = utils.getOggettoValoreUM(kgAmmCompVerde);
     var objAmmCompMisto = utils.getOggettoValoreUM(kgAmmCompMisto);

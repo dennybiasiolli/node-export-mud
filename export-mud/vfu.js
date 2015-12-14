@@ -39,6 +39,7 @@ exports.getRecordVFU = function(annoRiferimentoDichiarazione, codiceFiscale, cod
                                  kgGiac, kg160104prec1980, kg160104succ1980, kgGiac160104,
                                  callback)
 {
+    tipoScheda = tipoScheda.toUpperCase();
     var objConsTerzi = utils.getOggettoValoreUM(kgConsTerzi);
     var objSmaltProprio = (tipoScheda == 'FRA' ? utils.getOggettoValoreUM(kgSmaltProprio) : {});
     var objRecMatProprio = (tipoScheda == 'FRA' ? utils.getOggettoValoreUM(kgRecMatProprio) : {});
@@ -222,6 +223,7 @@ function getRecordVFU_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                              kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006,
                              callback)
 {
+    tipoAllegato = tipoAllegato.toUpperCase();
     if(tipoAllegato != 'RT') { nazioneEstera = '';  codRegolamentoCEE_1013_2006 = '';  isSoggettoPrivato = false; }
     if(tipoAllegato != 'RT' || isSoggettoPrivato) { codiceFiscaleSoggetto = '';  ragioneSociale = '';  istatProvincia = 0;  istatComune = 0;  via = '';  civico = ''; cap = ''; }
     var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);

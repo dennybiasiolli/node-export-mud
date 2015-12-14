@@ -236,6 +236,7 @@ function getRecordRIF_RT_DR_TE(annoRiferimentoDichiarazione, codiceFiscale, codU
                                 isRicevutoPrivati, kgQtaSmaltimento, kgQtaRecuperoMateria, kgQtaRecuperoEnergia,
                                 callback)
 {
+    tipoAllegato = tipoAllegato.toUpperCase();
     if(codiceCER && typeof(codiceCER) === 'string') codiceCER = codiceCER.replace(/\D+/g, '');
     var out_codiceFiscaleSoggetto = (tipoAllegato == 'RT' && isRicevutoPrivati ? '' : codiceFiscaleSoggetto);
     var out_ragioneSociale = (tipoAllegato == 'RT' && isRicevutoPrivati ? '' : ragioneSociale);

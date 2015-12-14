@@ -92,7 +92,7 @@ exports.getRecordRAEE_Det = function(annoRiferimentoDichiarazione, codiceFiscale
                                       tipoRifiuto, kgQtaDichiarata,
                                       callback)
 {
-    if(tipoScheda == 'CRR') tipoRifiuto = '';
+    if(tipoScheda.toUpperCase() == 'CRR') tipoRifiuto = '';
     var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
     var retVal = util.format(
         '%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;',
@@ -214,6 +214,7 @@ function getRecordRAEE_RT_TE(annoRiferimentoDichiarazione, codiceFiscale, codUL,
                               kgQtaDichiarata, nazioneEstera, codRegolamentoCEE_1013_2006, isSoggettoPrivato,
                               callback)
 {
+    tipoAllegato = tipoAllegato.toUpperCase();
     if(tipoAllegato != 'RT') { nazioneEstera = '';  codRegolamentoCEE_1013_2006 = '';  isSoggettoPrivato = false; }
     if(tipoAllegato != 'RT' || isSoggettoPrivato) { codiceFiscaleSoggetto = '';  ragioneSociale = '';  istatProvincia = 0;  istatComune = 0;  via = '';  civico = ''; cap = ''; }
     var objQta = utils.getOggettoValoreUM(kgQtaDichiarata);
