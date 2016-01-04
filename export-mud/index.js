@@ -81,7 +81,7 @@ exports.getRecordXX = function(nAA, nAB, nBA, nBB, nBC, nBD, nBE, nDA, nDB, nRA,
         '%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;',
         'XX',
         '6.00/14', // Costante release file
-        utils.formattaNumero(10, 2), // Tipo di file: “10” (valore costante per i files prodotti con SW non fornito dalle CCIAA)
+        utils.formattaNumero(1, 2), // Tipo di file: "10" (valore costante per i files prodotti con SW non fornito dalle CCIAA, corretto a "01" per problemi di importazione sul software MUD)
         utils.formattaDataOra(new Date(), 'YYYYMMDD'), // dataOraCompilazione
         utils.formattaDataOra(new Date(), 'HHmmss'), // dataOraCompilazione
         utils.formattaNumero(nAA+nAB+nBA+nBB+nBC+nBD+nBE+nDA+nDB+nRA+nRB+nRC+nRD+nRE+nRF+nVC+nVD+nVE+nVF+nVG+nVH+nIA+nIB+nIC+nID+nIE+nIF+nMA, 8), // Nr. totale record estratti escluso “XX”
