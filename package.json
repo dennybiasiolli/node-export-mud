@@ -1,6 +1,6 @@
 {
   "name": "export-mud",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Funzioni utili per l'esportazione del MUD Telematico",
   "main": "export-mud/index.js",
   "dependencies": {
