@@ -4,7 +4,7 @@
   "description": "Funzioni utili per l'esportazione del MUD Telematico",
   "main": "export-mud/index.js",
   "dependencies": {
-    "moment": "^2.10.6"
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "jsdoc-baseline": "https://github.com/dennybiasiolli/jsdoc-baseline/tarball/master"
