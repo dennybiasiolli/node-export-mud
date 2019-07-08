@@ -7,7 +7,7 @@
     "moment": "^2.14.1"
   },
   "devDependencies": {
-    "jsdoc-baseline": "https://github.com/dennybiasiolli/jsdoc-baseline/tarball/master"
+    "jsdoc-baseline": "https://github.com/dennybiasiolli/jsdoc-baseline/tarball/222e13a"
   },
   "scripts": {
     "test": "node test"
